@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/image_add_neighbors"
+        android:layout_width="133dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_baseline_person_outline_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/hint_image" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/imageLyt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/image_add_neighbors">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/hint_image"
+        android:inputType="text"
+        android:padding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nomLyt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/imageLyt">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/hint_nom"
+            android:inputType="text"
+            android:padding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/telephoneLyt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/nomLyt">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/telephone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/hint_telephone"
+            android:inputType="text"
+            android:padding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/websiteLyt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/telephoneLyt">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/hint_website"
+            android:inputType="text"
+            android:padding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/adresseLyt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/websiteLyt">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/adresse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="@string/hint_adresse"
+            android:inputType="text"
+            android:padding="10dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/aproposLyt"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:ignore="DuplicateIds,MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@+id/adresseLyt">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/apropos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/hint_apropos"
+            android:inputType="textMultiLine"
+            android:padding="30dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/containedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/darker_gray"
+        android:text="@string/hint_btn_enregistrer"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@android:color/system_neutral1_300"
+        app:layout_constraintTop_toBottomOf="@+id/aproposLyt"
+        tools:ignore="MissingClass,MissingConstraints"
+        />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
