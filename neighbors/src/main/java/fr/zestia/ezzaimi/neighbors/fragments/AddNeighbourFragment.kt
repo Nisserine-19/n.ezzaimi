@@ -32,7 +32,27 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
 //            }
 //        }
         binding.saveBtn?.setOnClickListener {
-            getneighborvalue()
+//            getneighborvalue
+            with(binding) {
+                val avatarUrlvalue = image.text.toString()
+                val namevalue = nom.text.toString()
+                val addressvalue = adresse.text.toString()
+                val phonevalue = telephone.text.toString()
+                val aboutMevalue = apropos.text.toString()
+                val webSitevalue = website.text.toString()
+
+                val neigbour = Neighbor(
+                    NeighborRepository.getInstance().getIdNeigbour(),
+                    namevalue,
+                    avatarUrlvalue,
+                    addressvalue,
+                    phonevalue,
+                    aboutMevalue,
+                    false,
+                    webSitevalue
+                )
+                NeighborRepository.getInstance().addNeighbour(neigbour)
+            }
 
             (activity as? NavigationListener)?.showFragment(ListNeighborsFragment())
         }
@@ -48,71 +68,43 @@ class AddNeighbourFragment : Fragment(), TextWatcher {
         return view
     }
 
-    private fun getneighborvalue() {
-        with(binding) {
-            val avatarUrlvalue = image.text.toString()
-            val namevalue = nom.text.toString()
-            val addressvalue = adresse.text.toString()
-            val phonevalue = telephone.text.toString()
-            val aboutMevalue = apropos.text.toString()
-            val webSitevalue = website.text.toString()
-
-            val neigbour = Neighbor(
-                NeighborRepository.getInstance().getIdNeigbour(),
-                namevalue,
-                avatarUrlvalue,
-                addressvalue,
-                phonevalue,
-                aboutMevalue,
-                false,
-                webSitevalue
-            )
-            NeighborRepository.getInstance().addNeighbour(neigbour)
-        }
-    }
-
     private fun validbtn() {
         with(binding) {
 
-            val imageNotNull: Boolean = !image.text.isNullOrEmpty()
-            val nameFieldNotNull: Boolean = !nom.text.isNullOrEmpty()
-            val telephoneNotNull: Boolean = !telephone.text.isNullOrEmpty()
-            val websiteNotNull: Boolean = !website.text.isNullOrEmpty()
-            val adressdNotNull: Boolean = !adresse.text.isNullOrEmpty()
-            val aproposNotNull: Boolean = !apropos.text.isNullOrEmpty()
+            val imageContraintes: Boolean = !image.text.isNullOrEmpty()
+            val nameContraintes: Boolean = !nom.text.isNullOrEmpty()
+            val telephoneContraintes: Boolean = !telephone.text.isNullOrEmpty()
+            val websiteContraintes: Boolean = !website.text.isNullOrEmpty()
+            val adressdContraintes: Boolean = !adresse.text.isNullOrEmpty()
+            val aproposContraintes: Boolean = !apropos.text.isNullOrEmpty()
 
             val telephoneValid: Boolean = isValidtelephone(telephone.text)
-            if (!telephoneValid && telephoneNotNull) {
+            if (!telephoneValid && telephoneContraintes) {
                 telephone.error = "le format doit être 0X XX XX XX XX XX"
             }
 
             val imageUrlValid: Boolean = isValidUrl(image.text)
-            if (!imageUrlValid && imageNotNull) {
+            if (!imageUrlValid && imageContraintes) {
                 image.error = "lien d'image invalide"
             }
 
             val websiteUrlValid: Boolean = isValidUrl(website.text)
-            if (!websiteUrlValid && websiteNotNull) {
+            if (!websiteUrlValid && websiteContraintes) {
                 website.error = "lien invalide"
             }
 
             saveBtn?.isEnabled =
-                nameFieldNotNull &&
-                adressdNotNull &&
-                telephoneNotNull &&
-                websiteNotNull &&
-                aproposNotNull &&
-                imageNotNull &&
+                nameContraintes &&
+                adressdContraintes &&
+                telephoneContraintes &&
+                websiteContraintes &&
+                aproposContraintes &&
+                imageContraintes &&
                 telephoneValid &&
                 imageUrlValid &&
                 websiteUrlValid
         }
     }
-
-//    private fun isValidEmail(target: CharSequence?): Boolean {
-//        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target)
-//            .matches()
-//    }
 
     private fun isValidtelephone(target: CharSequence?): Boolean {
         return (
